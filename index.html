@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>GEV Davetiye</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      width: 320px;
+      height: 200px;
+      cursor: pointer;
+    }
+
+    .envelope {
+      width: 100%;
+      height: 100%;
+      background: #f3f3f3;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #e0e0e0;
+      clip-path: polygon(0 0, 100% 0, 50% 50%);
+      transform-origin: top center;
+      transition: transform 1s ease;
+      z-index: 3;
+    }
+
+    .logo-wrapper {
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      z-index: 4;
+    }
+
+    .logo-text-left,
+    .logo-text-right {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 38px;
+      font-weight: normal;
+      color: #222;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .spiral-on-envelope {
+      width: 50px;
+      height: 50px;
+      animation: rotate 10s linear infinite;
+    }
+
+    .card {
+      position: absolute;
+      bottom: -100px;
+      left: 0;
+      width: 100%;
+      background: #000;
+      color: white;
+      border-radius: 20px;
+      padding: 30px 20px;
+      text-align: center;
+      transform: translateY(100%);
+      transition: transform 1s ease;
+      z-index: 5;
+      opacity: 0;
+    }
+
+    .container.open .flap {
+      transform: rotateX(-180deg);
+    }
+
+    .container.open .card {
+      transform: translateY(-25px);
+      opacity: 1;
+    }
+
+    .spiral {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 20px auto;
+      animation: rotate 10s linear infinite;
+    }
+
+    .spiral svg,
+    .spiral-on-envelope svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    h1 {
+      font-size: 22px;
+      margin: 10px 0;
+      letter-spacing: 1px;
+    }
+
+    .info {
+      font-size: 16px;
+      color: #f33;
+      line-height: 1.6;
+      margin-top: 20px;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .red-bar {
+      width: 100%;
+      height: 4px;
+      background: red;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" onclick="this.classList.toggle('open')">
+
+    <div class="card">
+      <div class="spiral">
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="10" fill="none" stroke="red" stroke-width="2"/>
+          <circle cx="50" cy="50" r="20" fill="none" stroke="red" stroke-width="2"/>
+          <circle cx="50" cy="50" r="30" fill="none" stroke="red" stroke-width="2"/>
+          <circle cx="50" cy="50" r="40" fill="none" stroke="red" stroke-width="2"/>
+          <circle cx="50" cy="50" r="50" fill="none" stroke="red" stroke-width="2"/>
+        </svg>
+      </div>
+      <h1>GEVREC KISA FİLM FESTİVALİ</h1>
+      <div class="red-bar"></div>
+      <div class="info">
+        Sekizde Tiyatro<br>
+        İzmir<br>
+        31 Mayıs - 1 Haziran 2025
+      </div>
+      <div class="footer">
+        @gevrecfilm | #gev2025
+      </div>
+    </div>
+
+    <div class="envelope">
+      <div class="logo-wrapper">
+        <div class="logo-text-left">GEV</div>
+        <div class="spiral-on-envelope">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="10" fill="none" stroke="red" stroke-width="2"/>
+            <circle cx="50" cy="50" r="20" fill="none" stroke="red" stroke-width="2"/>
+            <circle cx="50" cy="50" r="30" fill="none" stroke="red" stroke-width="2"/>
+            <circle cx="50" cy="50" r="40" fill="none" stroke="red" stroke-width="2"/>
+            <circle cx="50" cy="50" r="50" fill="none" stroke="red" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="logo-text-right">REC</div>
+      </div>
+      <div class="flap"></div>
+    </div>
+  </div>
+
+</body>
+</html>
