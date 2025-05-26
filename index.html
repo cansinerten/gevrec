@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>GEV Davetiye</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;900&display=swap" rel="stylesheet">
   <style>
     * {
@@ -20,12 +21,15 @@
       align-items: center;
       overflow: hidden;
       background-image: radial-gradient(circle at top left, rgba(255,255,255,0.5), transparent 70%);
+      padding: 20px;
     }
 
     .container {
       position: relative;
-      width: 320px;
-      height: 200px;
+      width: min(95vw, 420px);
+      height: min(65vw, 280px);
+      max-width: 440px;
+      max-height: 300px;
       cursor: pointer;
       transition: transform 0.3s ease;
     }
@@ -89,36 +93,43 @@
 
     .logo-text-left,
     .logo-text-right {
-      font-family: 'Barlow', sans-serif;
-      font-size: 38px;
+      font-size: clamp(28px, 6vw, 40px);
       font-weight: 900;
       color: #222;
-      letter-spacing: 1px;
       text-transform: uppercase;
     }
 
-    .spiral-on-envelope img {
-      width: 50px;
-      height: 50px;
-      animation: rotate 10s linear infinite;
-      filter: drop-shadow(0 0 3px rgba(0,0,0,0.2));
-    }
+    .spiral-on-envelope {
+  transform: translateY(4px); /* spiral çok az aşağı kaydırıldı */
+}
+
+.spiral-on-envelope img {
+  width: clamp(56px, 7vw, 70px);  /* daha büyük */
+  height: clamp(56px, 7vw, 70px);
+  animation: rotate 10s linear infinite;
+  filter: drop-shadow(0 0 3px rgba(0,0,0,0.2));
+}
+
+
 
     .card {
       position: absolute;
-      bottom: -100px;
+      bottom: -150px;
       left: 0;
       width: 100%;
       background: #000;
       color: white;
       border-radius: 20px;
-      padding: 30px 20px;
+      padding: 40px 24px 30px 24px;
       text-align: center;
       transform: translateY(100%);
       transition: transform 1s ease;
       z-index: 5;
       opacity: 0;
-      font-family: 'Barlow', sans-serif;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
 
     .container.open .flap {
@@ -126,14 +137,14 @@
     }
 
     .container.open .card {
-      transform: translateY(-25px);
+      transform: translateY(-60px);
       opacity: 1;
     }
 
     .spiral {
-      width: 100px;
-      height: 100px;
-      margin: 0 auto 20px auto;
+      width: clamp(80px, 20vw, 120px);
+      height: clamp(80px, 20vw, 120px);
+      margin: 0 auto 4px auto; /* Daha az boşluk */
       animation: rotate 10s linear infinite;
     }
 
@@ -148,39 +159,37 @@
     }
 
     h1 {
-      font-size: 22px;
-      margin: 10px 0;
+      font-size: clamp(18px, 5vw, 26px);
+      margin-top: 4px; /* daha yukarı */
+      margin-bottom: 10px;
       letter-spacing: 1px;
       font-weight: 700;
     }
 
     .info {
-      font-size: 16px;
+      font-size: clamp(14px, 4vw, 18px);
       color: #f33;
       line-height: 1.6;
       margin-top: 20px;
-      font-weight: 400;
     }
 
     .footer {
       margin-top: 30px;
-      font-size: 14px;
+      font-size: clamp(12px, 3vw, 16px);
       color: #aaa;
-      font-weight: 400;
     }
 
     .red-bar {
       width: 100%;
       height: 4px;
       background: red;
-      margin: 20px 0;
+      margin: 15px 0;
     }
   </style>
 </head>
 <body>
 
   <div class="container" onclick="this.classList.toggle('open')">
-
     <div class="card">
       <div class="spiral">
         <img src="https://i.hizliresim.com/ewym6f4.png" alt="Spiral">
